@@ -96,7 +96,6 @@ const styles = {
     textDecorationLine: 'underline',
   },
   paragraph: {
-    color: '#fff',
     paddingRight: 4,
     marginTop: 10,
     marginBottom: 10,
@@ -144,7 +143,6 @@ const styles = {
     padding: 5,
   },
   text: {
-    paddingRight: 4,
     color: '#fff',
   },
   u: {
