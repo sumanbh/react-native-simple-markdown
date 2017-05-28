@@ -5,40 +5,55 @@ const styles = {
     flexDirection: 'row',
   },
   blockQuoteSectionBar: {
+    marginTop: 5,
     width: 3,
     height: null,
     backgroundColor: '#DDDDDD',
-    marginRight: 15,
+    marginRight: 10,
+  },
+  blockQuoteText: {
+    opacity: 0.8,
   },
   codeBlock: {
+    paddingRight: 4,
+    color: '#fff',
     fontFamily: 'Courier',
     fontWeight: '500',
   },
   del: {
-    containerBackgroundColor: '#222222',
+    color: '#fff',
+    textDecorationLine: 'line-through',
   },
   em: {
+    color: '#fff',
     fontStyle: 'italic',
   },
   heading: {
+    color: '#fff',
     fontWeight: '200',
   },
   heading1: {
+    color: '#fff',
     fontSize: 32,
   },
   heading2: {
+    color: '#fff',
     fontSize: 24,
   },
   heading3: {
+    color: '#fff',
     fontSize: 18,
   },
   heading4: {
+    color: '#fff',
     fontSize: 16,
   },
   heading5: {
+    color: '#fff',
     fontSize: 13,
   },
   heading6: {
+    color: '#fff',
     fontSize: 11,
   },
   hr: {
@@ -50,6 +65,7 @@ const styles = {
     height: 320,
   },
   inlineCode: {
+    color: '#fff',
     backgroundColor: '#eeeeee',
     borderColor: '#dddddd',
     borderRadius: 3,
@@ -60,28 +76,42 @@ const styles = {
   link: {
     textDecorationLine: 'underline',
   },
+  list: {
+    paddingRight: 10,
+  },
   listItem: {
     flexDirection: 'row',
-    alignItems: 'center',
+  },
+  listItemBullet: {
+    color: '#fff',
+    fontSize: 20,
+    lineHeight: 20,
+    marginTop: 6,
   },
   listItemNumber: {
+    color: '#fff',
     fontWeight: 'bold',
   },
   mailTo: {
     textDecorationLine: 'underline',
   },
   paragraph: {
+    color: '#fff',
+    paddingRight: 4,
+    marginTop: 10,
+    marginBottom: 10,
     flexWrap: 'wrap',
     flexDirection: 'row',
     alignItems: 'flex-start',
     justifyContent: 'flex-start',
   },
   listItemText: {
+    paddingRight: 10,
+    color: '#fff',
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'flex-start',
     alignItems: 'flex-start',
-    color: '#222222',
   },
   strong: {
     fontWeight: 'bold',
@@ -114,10 +144,13 @@ const styles = {
     padding: 5,
   },
   text: {
-    color: '#222222',
+    paddingRight: 4,
+    color: '#fff',
   },
   u: {
-    textDecorationLine: 'underline'
+    textDecorationLine: 'underline',
+    paddingRight: 4,
+    color: '#fff',
   },
   video: {
     width: 300,

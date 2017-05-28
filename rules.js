@@ -1,7 +1,12 @@
 import React, { createElement } from 'react'
-import { Image, Text, View, Linking } from 'react-native'
+import { Image, Text, View, ScrollView, Linking } from 'react-native'
 import SimpleMarkdown from 'simple-markdown'
 import _ from 'lodash'
+import {
+  Cell,
+  Grid,
+  Row,
+} from 'react-native-tabular-grid'
 
 export default (styles) => ({
   autolink: {
@@ -21,7 +26,7 @@ export default (styles) => ({
         key: state.key,
         style: [styles.blockQuoteSectionBar, styles.blockQuoteBar]
       })
-      const blockText = createElement(Text, {
+      const blockText = createElement(View, {
         key: state.key + 1,
         style: styles.blockQuoteText
       }, output(node.content, state))
@@ -158,27 +163,17 @@ export default (styles) => ({
   },
   table: {
     react: (node, output, state) => {
-      const headers = _.map(node.header, (content, i) => {
-        return createElement(Text, {
-          style: styles.tableHeaderCell
-        }, output(content, state))
-      })
-
-      const header = createElement(View, { style: styles.tableHeader }, headers)
-
-      const rows = _.map(node.cells, (row, r) => {
-        const cells = _.map(row, (content, c) => {
-          return createElement(View, {
-            key: c,
-            style: styles.tableRowCell
-          }, output(content, state))
-        })
-        const rowStyles = [styles.tableRow]
-        node.cells.length - 1 == r ? rowStyles.push(styles.tableRowLast) : null
-        return createElement(View, { key: r, style: rowStyles }, cells)
-      })
-
-      return createElement(View, { key: state.key, style: styles.table }, [ header, rows ])
+      return <ScrollView horizontal>
+        <Grid key={state.key} style={styles.table}>
+          {[<Row id={1} key={1}>
+            {node.header.map((cell, column) => renderTableCell(cell, 1, column + 1, node.cells.length + 1, node.header.length, output, state, styles))}
+          </Row>].concat(node.cells.map((cells, row) => (
+            <Row id={row + 2} key={row + 2}>
+              {cells.map((cell, column) => renderTableCell(cell, row + 2, column + 1, node.cells.length + 1, cells.length, output, state, styles))}
+            </Row>
+          )))}
+        </Grid>
+      </ScrollView>
     }
   },
   text: {
