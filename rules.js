@@ -8,6 +8,48 @@ import {
   Row,
 } from 'react-native-tabular-grid'
 
+
+// FROM https://github.com/Benjamin-Dobell/react-native-markdown-view/blob/master/renders.js#L55
+function renderTableCell(cell, row, column, rowCount, columnCount, output, state, styles) {
+  const cellStyle = [styles.tableCell]
+  const contentStyle = [styles.tableCellContent]
+
+  if (row % 2 == 0) {
+    cellStyle.push(styles.tableCellEvenRow)
+    contentStyle.push(styles.tableCellContentEvenRow)
+  } else {
+    cellStyle.push(styles.tableCellOddRow)
+    contentStyle.push(styles.tableCellContentOddRow)
+  }
+
+  if (column % 2 == 0) {
+    cellStyle.push(styles.tableCellEvenColumn)
+    contentStyle.push(styles.tableCellContentEvenColumn)
+  } else {
+    cellStyle.push(styles.tableCellOddColumn)
+    contentStyle.push(styles.tableCellContentOddColumn)
+  }
+
+  if (row == 1) {
+    cellStyle.push(styles.tableHeaderCell)
+    contentStyle.push(styles.tableHeaderCellContent)
+  } else if (row == rowCount) {
+    cellStyle.push(styles.tableCellLastRow)
+    contentStyle.push(styles.tableCellContentLastRow)
+  }
+
+  if (column == columnCount) {
+    cellStyle.push(styles.tableCellLastColumn)
+    contentStyle.push(styles.tableCellContentLastColumn)
+  }
+
+  return <Cell rowId={row} id={column} key={column} style={cellStyle}>
+    <Text style={contentStyle}>
+      {output(cell, state)}
+    </Text>
+  </Cell>
+}
+
 export default (styles) => ({
   autolink: {
     react: (node, output, state) => {
